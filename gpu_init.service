@@ -1,0 +1,12 @@
+[Unit]
+Description=GPU Initialization Service
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/home/haz/gpu_init.sh
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
