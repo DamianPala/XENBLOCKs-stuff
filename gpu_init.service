@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=forking
-ExecStart=/home/haz/gpu_init.sh
+ExecStart=/<path>/gpu_init.sh
 Restart=on-failure
 RestartSec=5s
 
