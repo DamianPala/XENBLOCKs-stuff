@@ -1,0 +1,15 @@
+[Unit]
+Description=XEN Blocks Miner Service
+After=network.target gpu_init.service
+Requires=gpu_init.service
+
+[Service]
+Type=forking
+User=haz
+ExecStart=/usr/bin/tmux new-session -d -s xen-miner <xenblocksMiner_path> --minerAddr <miner_addr> --totalDevFee <fee>
+ExecStop=/usr/bin/tmux kill-session -t xen-miner
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
