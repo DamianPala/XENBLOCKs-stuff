@@ -4,6 +4,7 @@
 gpus=7
 power=280
 fan_speed=90
+max_gpu_clock=1875
 declare -A gpuClockOffsets=( [0]=+30 [1]=+30 [2]=+30 [3]=+30 [4]=+30 [5]=+30 [6]=+30 )
 declare -A memoryOffsets=( [0]=+100 [1]=+100 [2]=+100 [3]=+100 [4]=+100 [5]=+100 [6]=+100 )
 
@@ -105,7 +106,7 @@ done
 
 # Set max core clock for each GPU
 for ((gpu=0; gpu<gpus; gpu++)); do
-    nvidia-smi -i $gpu -lgc 0,1875
+    nvidia-smi -i $gpu -lgc 0,$max_gpu_clock
 done
 
 # Set power mizer mode, fan control state, and target fan speed for each GPU
